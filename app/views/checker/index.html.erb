@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <div class="card shadow p-4">
+    <h1 class="text-center mb-4">Plagiarism Checker</h1>
+
+    <%= form_with(url: checker_check_path, method: 'post', format: :turbo_stream, multipart: true, class: 'mb-4') do |form| %>
+     <div class="mb-3">
+        <label for="text1" class="form-label">Text 1:</label>
+        <%= form.text_area 'text1', rows: 4, cols: 50, class: 'form-control' %>
+      </div>
+
+      <div class="mb-3">
+        <label for="text_file_1" class="form-label">Text File 1 (txt or Pdf):</label>
+        <%= form.file_field 'text_file_1', accept: '.txt, .pdf', class: 'form-control' %>
+      </div>
+
+      <div class="mb-3">
+        <label for="text2" class="form-label">Text 2:</label>
+        <%= form.text_area 'text2', rows: 4, cols: 50, class: 'form-control' %>
+      </div>
+
+      <div class="mb-3">
+        <label for="text_file_2" class="form-label">Text File 2 (txt or Pdf):</label>
+        <%= form.file_field 'text_file_2', accept: '.txt, .pdf', class: 'form-control' %>
+      </div>
+
+      <%= form.submit 'Check Plagiarism', data: { turbo_frame: 'result' }, class: 'btn btn-primary btn-lg' %>
+    <% end %>
+ <turbo-frame id="result" class="mt-4">
+      <%= render partial: 'result' %>
+    </turbo-frame>
+  </div>
+</div>

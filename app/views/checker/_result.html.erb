@@ -1,0 +1,11 @@
+<!-- app/views/checker/_result.html.erb -->
+
+<h2 class="mb-3">Similarity Percentage: <%= @similarity_percentage&.round(2) %>%</h2>
+<% if @similarity_percentage %>
+  <p class="text-danger">Possible plagiarism detected!</p>
+<% else %>
+  <p class="text-success">No significant plagiarism detected.</p>
+<% end %>
+<p>Extracted Text 1: <%= @extracted_text1 %></p>
+<p>Extracted Text 2: <%= @extracted_text2 %></p>
+
